@@ -108,9 +108,26 @@ struct ContentView: View {
                             )
                             
                         }else{
-                            Text("Selected Time: \(challengeTime, formatter: timeFormatter)")
-                                               .font(.title2)
-                                               .padding()
+                            VStack(spacing: 0){
+                                HeadderTimer(timer: 0)
+                                Rectangle()
+                                                .fill(Color.gray)
+                                                .frame(width: screenWidth, height: 0.5)
+                                                .padding(.top,0)
+                                Spacer()
+                                Text("Selected Time: \(challengeTime, formatter: timeFormatter)")
+                                                   .font(.title2)
+                                                   .padding()
+                                Spacer()
+                            }
+                            .frame(width: screenWidth - 10, height: 350)
+                            .background(Color("BackGroundColour"))
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.black, lineWidth: 0.5)
+                            )
+                            
                         }
                     }
                     Spacer()
@@ -143,8 +160,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-
 
 struct HeadderTimer: View {
     var timer:Int

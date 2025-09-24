@@ -225,7 +225,7 @@ struct AnswerButton: View {
                 onAnswerSelected(country.id)
             }) {
                 Text(country.country_name)
-                    .font(.system(size: 14))
+                    .font(.system(size: 12))
                     .foregroundColor(.black)
                     .padding()
                     .frame(width: 110, height: 30)
@@ -255,7 +255,7 @@ struct AnswerButton: View {
                     country.id == correctAnswerId ? .green :
                     (selectedId == country.id && isCorrect == false ? .red : .clear)
                 )
-                .font(.system(size: 10))
+                .font(.system(size: 8))
             }
         }
     }
