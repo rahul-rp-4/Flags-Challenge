@@ -127,12 +127,10 @@ struct ContentView: View {
     func scheduleChallenge() {
         let timeInterval = challengeTime.timeIntervalSinceNow
         if timeInterval > 20 {
-            // Schedule the 20-second countdown to start 20 seconds before the challenge time
             Timer.scheduledTimer(withTimeInterval: timeInterval - 20, repeats: false) { _ in
                 self.isChallengeScheduled = true
             }
         } else if timeInterval > 0 {
-            // If the scheduled time is within 20 seconds, start the countdown immediately
             self.countdown = Int(timeInterval)
             self.isChallengeScheduled = true
         }

@@ -61,8 +61,6 @@ struct ChallengeView:View {
                          }
               Spacer()
           }
-         
-//          .padding()
           .frame(width: screenWidth - 10, height: 300)
           .background(Color("BackGroundColour"))
           .cornerRadius(10)
@@ -124,7 +122,6 @@ struct ChallengeView:View {
                 }
             }
     }
-    // MARK: - Move to next question after delay
     private func goToNextQuestion() {
            startAnswerTimer()
            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -146,10 +143,8 @@ struct ChallengeView:View {
        }
    private func answerTapped(selectedCountryId: Int) {
         timerCancellable?.cancel()
-       print("selectedCountryId -\(selectedCountryId)")
         selectedId = selectedCountryId
         isCorrect = (selectedCountryId == questions[currentIndex].answer_id)
-       print("questions[currentIndex].answer_id\(questions[currentIndex].answer_id)")
        if selectedCountryId == questions[currentIndex].answer_id{
            score += 1
        }
@@ -208,9 +203,7 @@ struct QuestionView: View {
     }
     
     private func onAnswerTapped(selectedCountryId: Int) {
-//        guard selectedId == nil else { return } // only allow single tap
         onAnswerSelected(selectedCountryId)
-        
     }
 }
 
@@ -226,10 +219,9 @@ struct AnswerButton: View {
     var body: some View {
         VStack(spacing: 4) {
             Button(action: {
-                guard selectedId == nil else { return } // only one selection
+                guard selectedId == nil else { return }
                 selectedId = country.id
                 isCorrect = (country.id == correctAnswerId)
-//                onAnswerSelected()
                 onAnswerSelected(country.id)
             }) {
                 Text(country.country_name)
